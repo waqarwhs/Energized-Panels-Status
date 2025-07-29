@@ -21,7 +21,8 @@ function App() {
 
   const toggleStatus = (panelIndex, sectionIndex) => {
     const newPanels = [...panels];
-    newPanels[panelIndex].sections[sectionIndex].status = !newPanels[panelIndex].sections[sectionIndex].status;
+    newPanels[panelIndex].sections[sectionIndex].status =
+      !newPanels[panelIndex].sections[sectionIndex].status;
     setPanels(newPanels);
   };
 
@@ -29,11 +30,29 @@ function App() {
     <div className="App" style={{ padding: 20 }}>
       <h1>🔌 Energized Status Tracker</h1>
       {panels.map((panel, panelIndex) => (
-        <div key={panel.panel} style={{ border: '1px solid #ccc', padding: 10, marginBottom: 20 }}>
+        <div
+          key={panel.panel}
+          style={{
+            border: '1px solid #ccc',
+            padding: 10,
+            marginBottom: 20,
+            borderRadius: 6,
+            background: '#f9f9f9',
+          }}
+        >
           <h2>{panel.panel}</h2>
           {panel.sections.map((section, sectionIndex) => (
-            <div key={section.code} style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0' }}>
-              <span>{section.code} - {section.label}</span>
+            <div
+              key={section.code}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '6px 0',
+              }}
+            >
+              <span>
+                {section.code} - {section.label}
+              </span>
               <button onClick={() => toggleStatus(panelIndex, sectionIndex)}>
                 {section.status ? '✅ Energized' : '❌ Unenergized'}
               </button>
